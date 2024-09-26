@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module id="ch.sbb.polarion.extension.aad.synchronizer.fake.services" version="1.0.0">
+
+    <contribution configuration-id="com.polarion.xray.webui.administrationPageExtenders">
+        <extender name="About"
+                  parentNodeName="AAD Synchronizer Fake Services"
+                  parentNodeIconUrl="/polarion/icons/default/topicIcons/documentsAndWiki.svg"
+                  iconUrl="/polarion/icons/default/topicIconsSmall/documentsAndWiki.svg"
+                  pageUrl="/polarion/aad-synchronizer-fake-services-admin/pages/about.jsp"
+                  projectScope="true"
+                  repositoryScope="true"/>
+        <extender name="Swagger UI"
+                  parentNodeName="AAD Synchronizer Fake Services"
+                  parentNodeIconUrl="/polarion/icons/default/topicIcons/documentsAndWiki.svg"
+                  iconUrl="/polarion/icons/default/topicIconsSmall/documentsAndWiki.svg"
+                  pageUrl="/polarion/aad-synchronizer-fake-services/rest/swagger"
+                  projectScope="false"
+                  repositoryScope="true"/>
+    </contribution>
+
+</module>
