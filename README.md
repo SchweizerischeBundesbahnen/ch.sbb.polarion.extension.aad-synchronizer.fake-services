@@ -1,6 +1,14 @@
 # Polarion ALM extension to <...>
 
 This Polarion extension provides possibility to <...>
+
+## Quick start
+
+The latest version of the extension can be downloaded from the [releases page](../../releases/latest) and installed to Polarion instance without necessity to be compiled from the sources.
+The extension should be copied to `<polarion_home>/polarion/extensions/ch.sbb.polarion.extension.aad-synchronizer.fake-services/eclipse/plugins` and changes will take effect after Polarion restart.
+> [!IMPORTANT]
+> Don't forget to clear `<polarion_home>/data/workspace/.config` folder after extension installation/update to make it work properly.
+
 ## Build
 
 This extension can be produced using maven:
@@ -33,4 +41,3 @@ Changes only take effect after restart of Polarion.
 ## Usage
 
 <...>
-
