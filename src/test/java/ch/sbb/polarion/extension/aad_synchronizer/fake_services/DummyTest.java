@@ -1,4 +1,4 @@
-package ch.sbb.polarion.extension.aad_synchronizer_fake_services;
+package ch.sbb.polarion.extension.aad_synchronizer.fake_services;
 
 import org.junit.jupiter.api.Test;
 

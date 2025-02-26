@@ -1,4 +1,4 @@
-package ch.sbb.polarion.extension.aad_synchronizer_fake_services.connector;
+package ch.sbb.polarion.extension.aad_synchronizer.fake_services.connector;
 
 import ch.sbb.polarion.extension.aad.synchronizer.connector.IGraphConnector;
 import ch.sbb.polarion.extension.aad.synchronizer.model.Group;
@@ -50,7 +50,7 @@ public class FakeGraphConnector implements IGraphConnector {
 
         for (int i = 0; i < numberOfMembers; i++) {
             String displayName = generateRandomName();
-            String mail = displayName.toLowerCase().replace(" ", ".") + "@sbb.ch";
+            String mail = displayName.toLowerCase().replace(" ", ".") + "@example.com";
             String mailNickname = generateRandomMailNickname();
             members.add(new Member(displayName, mail, mailNickname));
         }

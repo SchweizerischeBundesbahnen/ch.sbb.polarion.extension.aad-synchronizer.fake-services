@@ -1,4 +1,4 @@
-package ch.sbb.polarion.extension.aad_synchronizer_fake_services.service;
+package ch.sbb.polarion.extension.aad_synchronizer.fake_services.service;
 
 import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionService;
 import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionServiceFactory;

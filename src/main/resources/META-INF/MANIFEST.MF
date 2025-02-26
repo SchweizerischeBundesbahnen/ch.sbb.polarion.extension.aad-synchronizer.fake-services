@@ -1,6 +1,6 @@
 Support-Email: polarion-opensource@sbb.ch
 Bundle-Name: Fake Services for AAD Synchronizer
-Bundle-Activator: ch.sbb.polarion.extension.aad_synchronizer_fake_services.FakeServicesBundleActivator
+Bundle-Activator: ch.sbb.polarion.extension.aad_synchronizer.fake_services.FakeServicesBundleActivator
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.polarion.portal.tomcat,
  com.polarion.alm.ui,

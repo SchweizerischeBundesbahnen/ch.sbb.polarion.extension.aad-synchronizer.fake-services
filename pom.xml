@@ -44,7 +44,7 @@
     </issueManagement>
 
     <properties>
-        <maven-jar-plugin.Extension-Context>aad-synchronizer-fake-services</maven-jar-plugin.Extension-Context>
+        <maven-jar-plugin.Extension-Context>aad-synchronizer.fake-services</maven-jar-plugin.Extension-Context>
         <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.aad_synchronizer.fake_services</maven-jar-plugin.Automatic-Module-Name>
 
         <web.app.name>${maven-jar-plugin.Extension-Context}</web.app.name>
@@ -126,7 +126,7 @@
                     <resourcePackages>
                         <package>ch.sbb.polarion.extension.generic.rest.controller.info</package>
                         <package>ch.sbb.polarion.extension.generic.rest.model</package>
-                        <package>ch.sbb.polarion.extension.aad_synchronizer_fake_services.rest.controller</package>
+                        <package>ch.sbb.polarion.extension.aad_synchronizer.fake_services.rest.controller</package>
                     </resourcePackages>
                 </configuration>
             </plugin>

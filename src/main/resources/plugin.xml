@@ -4,15 +4,15 @@
     <extension
             point="com.polarion.portal.tomcat.webapps">
         <webapp
-                name="polarion/aad-synchronizer-fake-services"
-                contextRoot="webapp/aad-synchronizer-fake-services">
+                name="polarion/aad-synchronizer.fake-services"
+                contextRoot="webapp/aad-synchronizer.fake-services">
         </webapp>
     </extension>
     <extension
             point="com.polarion.portal.tomcat.webapps">
         <webapp
-                name="polarion/aad-synchronizer-fake-services-admin"
-                contextRoot="webapp/aad-synchronizer-fake-services-admin">
+                name="polarion/aad-synchronizer.fake-services-admin"
+                contextRoot="webapp/aad-synchronizer.fake-services-admin">
         </webapp>
     </extension>
 </plugin>

@@ -1,4 +1,4 @@
-package ch.sbb.polarion.extension.aad_synchronizer_fake_services.rest;
+package ch.sbb.polarion.extension.aad_synchronizer.fake_services.rest;
 
 import ch.sbb.polarion.extension.generic.rest.GenericRestApplication;
 
