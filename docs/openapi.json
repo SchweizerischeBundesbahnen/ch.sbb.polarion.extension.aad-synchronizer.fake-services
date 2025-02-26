@@ -1,0 +1,106 @@
+{
+  "openapi" : "3.0.1",
+  "paths" : {
+    "/api/context" : {
+      "get" : {
+        "operationId" : "getContext",
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            },
+            "description" : "Context information"
+          }
+        },
+        "summary" : "Returns basic context information of Polarion's extension",
+        "tags" : [ "Extension Information" ]
+      }
+    },
+    "/api/version" : {
+      "get" : {
+        "operationId" : "getVersion",
+        "responses" : {
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Version"
+                }
+              }
+            },
+            "description" : "Version information"
+          }
+        },
+        "summary" : "Returns version of Polarion's extension",
+        "tags" : [ "Extension Information" ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Context" : {
+        "type" : "object",
+        "description" : "Represents the context for building URLs related to Polarion services",
+        "properties" : {
+          "baseUrl" : {
+            "type" : "string",
+            "description" : "Returns the base URL constructed with the extension context",
+            "example" : "/polarion/pdf-exporter"
+          },
+          "extensionContext" : {
+            "type" : "string",
+            "description" : "The extension context used as a base for URL construction",
+            "example" : "pdf-exporter"
+          },
+          "restUrl" : {
+            "type" : "string",
+            "description" : "Returns the REST API URL constructed with the extension context",
+            "example" : "/polarion/pdf-exporter/rest"
+          },
+          "swaggerUiUrl" : {
+            "type" : "string",
+            "description" : "Returns the Swagger UI URL for the REST API"
+          }
+        }
+      },
+      "Version" : {
+        "type" : "object",
+        "description" : "Details about the software version",
+        "properties" : {
+          "automaticModuleName" : {
+            "type" : "string",
+            "description" : "The automatic module name"
+          },
+          "bundleBuildTimestamp" : {
+            "type" : "string",
+            "description" : "The build timestamp of the bundle"
+          },
+          "bundleName" : {
+            "type" : "string",
+            "description" : "The name of the bundle"
+          },
+          "bundleVendor" : {
+            "type" : "string",
+            "description" : "The vendor of the bundle"
+          },
+          "bundleVersion" : {
+            "type" : "string",
+            "description" : "The version of the bundle"
+          },
+          "projectURL" : {
+            "type" : "string",
+            "description" : "The project URL"
+          },
+          "supportEmail" : {
+            "type" : "string",
+            "description" : "Support email for the bundle"
+          }
+        }
+      }
+    }
+  }
+}

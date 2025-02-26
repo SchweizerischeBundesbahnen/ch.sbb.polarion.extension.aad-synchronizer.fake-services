@@ -5,7 +5,7 @@
     <parent>
         <groupId>ch.sbb.polarion.extensions</groupId>
         <artifactId>ch.sbb.polarion.extension.generic</artifactId>
-        <version>6.0.2</version>
+        <version>8.0.0</version>
     </parent>
 
     <artifactId>ch.sbb.polarion.extension.aad-synchronizer-fake-services</artifactId>
@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <aad-synchronizer.version>2.1.0</aad-synchronizer.version>
+        <aad-synchronizer.version>2.3.0</aad-synchronizer.version>
         <org.osgi.framework.version>1.10.0</org.osgi.framework.version>
 
         <maven-jar-plugin.Extension-Context>aad-synchronizer-fake-services</maven-jar-plugin.Extension-Context>
@@ -46,6 +46,16 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>ch.sbb.maven.plugins</groupId>
+                <artifactId>markdown2html-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
 
@@ -72,6 +82,19 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <configuration>
+                    <outputFormat>JSON</outputFormat>
+                    <sortOutput>true</sortOutput>
+                    <resourcePackages>
+                        <package>ch.sbb.polarion.extension.generic.rest.controller.info</package>
+                        <package>ch.sbb.polarion.extension.generic.rest.model</package>
+                    </resourcePackages>
+                </configuration>
             </plugin>
         </plugins>
     </build>
