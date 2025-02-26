@@ -1,4 +1,4 @@
-package ch.sbb.polarion.extension.aad.synchronizer.fake.services;
+package ch.sbb.polarion.extension.aad_synchronizer_fake_services;
 
 import ch.sbb.polarion.extension.generic.GenericUiServlet;
 

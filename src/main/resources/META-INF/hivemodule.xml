@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module id="ch.sbb.polarion.extension.aad.synchronizer.fake.services" version="1.0.0">
+<module id="ch.sbb.polarion.extension.aad_synchronizer_fake_services" version="1.0.0">
 
     <contribution configuration-id="com.polarion.xray.webui.administrationPageExtenders">
         <extender id="about"

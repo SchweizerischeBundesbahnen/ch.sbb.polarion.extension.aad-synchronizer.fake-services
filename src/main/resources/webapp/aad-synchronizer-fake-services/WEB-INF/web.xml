@@ -24,7 +24,7 @@
 
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>ch.sbb.polarion.extension.aad.synchronizer.fake.services.AADSynchronizerFakeServicesRestApplication</param-value>
+			<param-value>ch.sbb.polarion.extension.aad_synchronizer_fake_services.AADSynchronizerFakeServicesRestApplication</param-value>
 		</init-param>
 
 		<init-param>

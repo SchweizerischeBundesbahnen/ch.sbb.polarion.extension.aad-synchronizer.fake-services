@@ -30,7 +30,7 @@
 
 	<servlet>
 		<servlet-name>aad-synchronizer-fake-services-admin-ui</servlet-name>
-		<servlet-class>ch.sbb.polarion.extension.aad.synchronizer.fake.services.AADSynchronizerFakeServicesAdminUiServlet</servlet-class>
+		<servlet-class>ch.sbb.polarion.extension.aad_synchronizer_fake_services.AADSynchronizerFakeServicesAdminUiServlet</servlet-class>
 
 		<init-param>
 			<param-name>debug</param-name>
