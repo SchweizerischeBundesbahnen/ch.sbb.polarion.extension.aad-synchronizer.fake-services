@@ -1,5 +1,9 @@
 {
   "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Fake Services for AAD Synchronizer REST API",
+    "version" : "v1"
+  },
   "paths" : {
     "/api/context" : {
       "get" : {

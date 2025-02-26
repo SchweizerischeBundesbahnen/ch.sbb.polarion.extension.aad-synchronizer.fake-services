@@ -93,6 +93,7 @@
                     <resourcePackages>
                         <package>ch.sbb.polarion.extension.generic.rest.controller.info</package>
                         <package>ch.sbb.polarion.extension.generic.rest.model</package>
+                        <package>ch.sbb.polarion.extension.aad_synchronizer_fake_services.rest.controller</package>
                     </resourcePackages>
                 </configuration>
             </plugin>
