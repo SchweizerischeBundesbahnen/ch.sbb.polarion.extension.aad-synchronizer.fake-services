@@ -8,18 +8,18 @@
         <version>8.0.0</version>
     </parent>
 
-    <artifactId>ch.sbb.polarion.extension.aad-synchronizer-fake-services</artifactId>
+    <artifactId>ch.sbb.polarion.extension.aad-synchronizer.fake-services</artifactId>
     <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>... extension of Polarion ALM</name>
     <description>This is a Polarion extension which provides ...</description>
-    <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name</url>
+    <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services</url>
 
     <licenses>
         <license>
             <name>The SBB License, Version 1.0</name>
-            <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name/blob/main/LICENSES/SBB.txt</url>
+            <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/blob/main/LICENSES/SBB.txt</url>
         </license>
     </licenses>
 
@@ -33,19 +33,19 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name.git</developerConnection>
-        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name/tree/main</url>
+        <connection>scm:git:git://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services.git</developerConnection>
+        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/tree/main</url>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name/issues</url>
+        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/issues</url>
     </issueManagement>
 
     <properties>
         <maven-jar-plugin.Extension-Context>aad-synchronizer-fake-services</maven-jar-plugin.Extension-Context>
-        <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.aad_synchronizer_fake_services</maven-jar-plugin.Automatic-Module-Name>
+        <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.aad_synchronizer.fake_services</maven-jar-plugin.Automatic-Module-Name>
 
         <web.app.name>${maven-jar-plugin.Extension-Context}</web.app.name>
 

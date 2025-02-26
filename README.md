@@ -22,8 +22,8 @@ mvn clean package
 
 ## Installation to Polarion
 
-To install the extension to Polarion `ch.sbb.polarion.extension.aad-synchronizer-fake-services-<version>.jar`
-should be copied to `<polarion_home>/polarion/extensions/ch.sbb.polarion.extension.aad-synchronizer-fake-services/eclipse/plugins`
+To install the extension to Polarion `ch.sbb.polarion.extension.aad-synchronizer.fake-services-<version>.jar`
+should be copied to `<polarion_home>/polarion/extensions/ch.sbb.polarion.extension.aad-synchronizer.fake-services/eclipse/plugins`
 It can be done manually or automated using maven build:
 ```bash
 mvn clean install -P install-to-local-polarion
