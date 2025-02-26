@@ -2,6 +2,8 @@ package ch.sbb.polarion.extension.aad_synchronizer_fake_services;
 
 import ch.sbb.polarion.extension.aad.synchronizer.connector.IGraphConnector;
 import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionServiceFactory;
+import ch.sbb.polarion.extension.aad_synchronizer_fake_services.connector.FakeGraphConnector;
+import ch.sbb.polarion.extension.aad_synchronizer_fake_services.service.FakePolarionServiceFactory;
 import com.polarion.core.util.logging.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
