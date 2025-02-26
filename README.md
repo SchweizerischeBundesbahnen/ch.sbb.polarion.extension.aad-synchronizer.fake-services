@@ -16,7 +16,6 @@ The extension should be copied to `<polarion_home>/polarion/extensions/ch.sbb.po
 ## Build
 
 This extension can be produced using maven:
-
 ```bash
 mvn clean package
 ```
@@ -26,11 +25,9 @@ mvn clean package
 To install the extension to Polarion `ch.sbb.polarion.extension.aad-synchronizer-fake-services-<version>.jar`
 should be copied to `<polarion_home>/polarion/extensions/ch.sbb.polarion.extension.aad-synchronizer-fake-services/eclipse/plugins`
 It can be done manually or automated using maven build:
-
 ```bash
 mvn clean install -P install-to-local-polarion
 ```
-
 For automated installation with maven env variable `POLARION_HOME` should be defined and point to folder where Polarion is installed.
 
 Changes only take effect after restart of Polarion.
