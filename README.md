@@ -1,6 +1,10 @@
-# Polarion ALM extension to <...>
+# Fake Services for AAD Synchronizer
 
-This Polarion extension provides possibility to <...>
+This extension allows to test AAD Synchronizer on local Polarion without need to have Azure AD environment.
+
+> [!IMPORTANT]
+> Starting from version 2.0.0 only latest version of Polarion is supported.
+> Right now it is Polarion 2410.
 
 ## Quick start
 
@@ -18,8 +22,8 @@ mvn clean package
 
 ## Installation to Polarion
 
-To install the extension to Polarion `ch.sbb.polarion.extension.<extension_name>-<version>.jar`
-should be copied to `<polarion_home>/polarion/extensions/ch.sbb.polarion.extension.<extension_name>/eclipse/plugins`
+To install the extension to Polarion `ch.sbb.polarion.extension.aad-synchronizer.fake-services-<version>.jar`
+should be copied to `<polarion_home>/polarion/extensions/ch.sbb.polarion.extension.aad-synchronizer.fake-services/eclipse/plugins`
 It can be done manually or automated using maven build:
 ```bash
 mvn clean install -P install-to-local-polarion
@@ -30,14 +34,4 @@ Changes only take effect after restart of Polarion.
 
 ## Polarion configuration
 
-<...>
-
-
-## Extension Configuration
-
-<...>
-
-
-## Usage
-
-<...>
+No explicit configuration is needed. If extension is installed, it will be used by AAD Synchronizer.

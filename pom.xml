@@ -5,21 +5,21 @@
     <parent>
         <groupId>ch.sbb.polarion.extensions</groupId>
         <artifactId>ch.sbb.polarion.extension.generic</artifactId>
-        <version>7.7.0</version>
+        <version>8.0.0</version>
     </parent>
 
-    <artifactId>ch.sbb.polarion.extension.extension-name</artifactId>
-    <version>0.0.0-SNAPSHOT</version>
+    <artifactId>ch.sbb.polarion.extension.aad-synchronizer.fake-services</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>... extension of Polarion ALM</name>
-    <description>This is a Polarion extension which provides ...</description>
-    <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name</url>
+    <name>Polarion ALM extension to intercept requests from AAD Synchronizer to Azure AD</name>
+    <description>This is a Polarion extension which provides ability to test AAD Synchronizer extension on local Polarion without need to have Azure AD environment</description>
+    <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services</url>
 
     <licenses>
         <license>
             <name>The SBB License, Version 1.0</name>
-            <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name/blob/main/LICENSES/SBB.txt</url>
+            <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/blob/main/LICENSES/SBB.txt</url>
         </license>
     </licenses>
 
@@ -33,21 +33,24 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name.git</developerConnection>
-        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name/tree/main</url>
+        <connection>scm:git:git://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services.git</developerConnection>
+        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/tree/main</url>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.extension-name/issues</url>
+        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/issues</url>
     </issueManagement>
 
     <properties>
-        <maven-jar-plugin.Extension-Context>extension-name</maven-jar-plugin.Extension-Context>
-        <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.extension_name</maven-jar-plugin.Automatic-Module-Name>
+        <maven-jar-plugin.Extension-Context>aad-synchronizer.fake-services</maven-jar-plugin.Extension-Context>
+        <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.aad_synchronizer.fake_services</maven-jar-plugin.Automatic-Module-Name>
 
         <web.app.name>${maven-jar-plugin.Extension-Context}</web.app.name>
+
+        <aad-synchronizer.version>3.0.0</aad-synchronizer.version>
+        <org.osgi.framework.version>1.10.0</org.osgi.framework.version>
     </properties>
 
     <dependencies>
@@ -55,6 +58,20 @@
             <groupId>ch.sbb.polarion.extensions</groupId>
             <artifactId>ch.sbb.polarion.extension.generic.app</artifactId>
             <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.sbb.polarion.extensions</groupId>
+            <artifactId>ch.sbb.polarion.extension.aad-synchronizer</artifactId>
+            <version>${aad-synchronizer.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.framework</artifactId>
+            <version>${org.osgi.framework.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -98,6 +115,20 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <configuration>
+                    <outputFormat>JSON</outputFormat>
+                    <sortOutput>true</sortOutput>
+                    <resourcePackages>
+                        <package>ch.sbb.polarion.extension.generic.rest.controller.info</package>
+                        <package>ch.sbb.polarion.extension.generic.rest.model</package>
+                        <package>ch.sbb.polarion.extension.aad_synchronizer.fake_services.rest.controller</package>
+                    </resourcePackages>
+                </configuration>
             </plugin>
         </plugins>
     </build>

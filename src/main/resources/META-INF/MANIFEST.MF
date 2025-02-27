@@ -1,14 +1,16 @@
 Support-Email: polarion-opensource@sbb.ch
-Bundle-Name: Extension for Polarion ALM
+Bundle-Name: Fake Services for AAD Synchronizer
+Bundle-Activator: ch.sbb.polarion.extension.aad_synchronizer.fake_services.FakeServicesBundleActivator
+Bundle-ActivationPolicy: lazy
 Require-Bundle: com.polarion.portal.tomcat,
  com.polarion.alm.ui,
- com.polarion.platform.guice,
- com.polarion.alm.tracker,
+ com.polarion.alm.projects,
+ com.polarion.platform,
+ ch.sbb.polarion.extension.aad-synchronizer,
  org.glassfish.jersey,
  com.fasterxml.jackson,
  com.fasterxml.jackson.jaxrs,
  io.swagger,
  org.apache.commons.logging,
- slf4j.api,
- org.springframework.spring-core,
- org.springframework.spring-web
+ slf4j.api
+Import-Package: org.osgi.framework
