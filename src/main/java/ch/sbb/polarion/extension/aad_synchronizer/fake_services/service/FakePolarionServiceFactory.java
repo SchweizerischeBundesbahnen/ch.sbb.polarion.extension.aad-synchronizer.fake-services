@@ -6,11 +6,12 @@ import com.polarion.alm.projects.IProjectService;
 import com.polarion.platform.security.ISecurityService;
 
 import java.util.List;
+import java.util.Random;
 
 public class FakePolarionServiceFactory implements IPolarionServiceFactory {
 
     @Override
     public IPolarionService createPolarionService(ISecurityService securityService, IProjectService projectService, boolean dryRun, List<String> memberIds) {
-        return new FakePolarionService(securityService, projectService, dryRun, memberIds);
+        return new FakePolarionService(securityService, projectService, dryRun, memberIds, new Random());
     }
 }

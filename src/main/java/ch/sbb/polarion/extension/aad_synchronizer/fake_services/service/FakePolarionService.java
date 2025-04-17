@@ -10,17 +10,14 @@ import java.util.Random;
 
 public class FakePolarionService extends PolarionService {
 
-    public static final Random RANDOM = new Random();
-
     private final List<String> polarionUsers;
 
-    public FakePolarionService(ISecurityService securityService, IProjectService projectService, boolean dryRun, List<String> memberIds) {
+    public FakePolarionService(ISecurityService securityService, IProjectService projectService, boolean dryRun, List<String> memberIds, Random random) {
         super(securityService, projectService, dryRun);
-
         polarionUsers = super.getAllPolarionUsers();
 
         for (String member : memberIds) {
-            if (RANDOM.nextBoolean()) {
+            if (random.nextBoolean()) {
                 if (member.startsWith("u")) {
                     polarionUsers.add(member.toUpperCase());
                 } else {
@@ -29,7 +26,7 @@ public class FakePolarionService extends PolarionService {
             }
         }
 
-        if (RANDOM.nextBoolean()) {
+        if (random.nextBoolean()) {
             polarionUsers.add("testuser");
             polarionUsers.add("testUser");
             polarionUsers.add("TESTUSER");
