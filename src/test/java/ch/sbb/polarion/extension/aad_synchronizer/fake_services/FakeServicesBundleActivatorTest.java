@@ -27,7 +27,7 @@ class FakeServicesBundleActivatorTest {
 
     @Test
     @SneakyThrows()
-    public void testStartRegistersServices() {
+    void testStartRegistersServices() {
         ServiceRegistration mockGraphReg = mock(ServiceRegistration.class);
         ServiceRegistration mockPolarionReg = mock(ServiceRegistration.class);
 

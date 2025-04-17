@@ -5,14 +5,14 @@ import com.polarion.alm.projects.IProjectService;
 import com.polarion.platform.security.ISecurityService;
 import org.jetbrains.annotations.NotNull;
 
+import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 
 public class FakePolarionService extends PolarionService {
 
     private final List<String> polarionUsers;
 
-    public FakePolarionService(ISecurityService securityService, IProjectService projectService, boolean dryRun, List<String> memberIds, Random random) {
+    public FakePolarionService(ISecurityService securityService, IProjectService projectService, boolean dryRun, List<String> memberIds, SecureRandom random) {
         super(securityService, projectService, dryRun);
         polarionUsers = super.getAllPolarionUsers();
 

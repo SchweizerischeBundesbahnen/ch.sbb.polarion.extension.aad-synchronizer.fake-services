@@ -8,9 +8,9 @@ import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -33,7 +33,7 @@ class FakePolarionServiceTest {
         when(mockUserList.stream()).thenReturn(Stream.of(mockUser1, mockUser2));
 
         List<String> memberIds = Arrays.asList("user1", "dev2");
-        Random controlledRandom = new Random() {
+        SecureRandom controlledRandom = new SecureRandom() {
             private int count = 0;
 
             @Override

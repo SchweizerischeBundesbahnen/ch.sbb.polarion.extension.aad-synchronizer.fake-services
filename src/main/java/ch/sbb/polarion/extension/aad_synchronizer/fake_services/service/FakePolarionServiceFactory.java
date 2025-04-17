@@ -5,13 +5,13 @@ import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionServiceFactor
 import com.polarion.alm.projects.IProjectService;
 import com.polarion.platform.security.ISecurityService;
 
+import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 
 public class FakePolarionServiceFactory implements IPolarionServiceFactory {
 
     @Override
     public IPolarionService createPolarionService(ISecurityService securityService, IProjectService projectService, boolean dryRun, List<String> memberIds) {
-        return new FakePolarionService(securityService, projectService, dryRun, memberIds, new Random());
+        return new FakePolarionService(securityService, projectService, dryRun, memberIds, new SecureRandom());
     }
 }
