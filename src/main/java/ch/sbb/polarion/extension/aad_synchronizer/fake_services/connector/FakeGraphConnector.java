@@ -5,6 +5,7 @@ import ch.sbb.polarion.extension.aad.synchronizer.model.Group;
 import ch.sbb.polarion.extension.aad.synchronizer.model.Member;
 import ch.sbb.polarion.extension.aad.synchronizer.model.OrganizationData;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 public class FakeGraphConnector implements IGraphConnector {
 
-    public static final Random RANDOM = new Random();
+    public static final SecureRandom RANDOM = new SecureRandom();
 
     private static final String[] NAMES = {
             "Alice", "Bob", "Carol", "David", "Emma", "Eva", "Frank", "Grace", "Henry", "Isabella", "Jack",
