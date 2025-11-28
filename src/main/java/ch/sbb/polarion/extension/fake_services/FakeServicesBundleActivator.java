@@ -1,9 +1,9 @@
-package ch.sbb.polarion.extension.aad_synchronizer.fake_services;
+package ch.sbb.polarion.extension.fake_services;
 
 import ch.sbb.polarion.extension.aad.synchronizer.connector.IGraphConnector;
 import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionServiceFactory;
-import ch.sbb.polarion.extension.aad_synchronizer.fake_services.connector.FakeGraphConnector;
-import ch.sbb.polarion.extension.aad_synchronizer.fake_services.service.FakePolarionServiceFactory;
+import ch.sbb.polarion.extension.fake_services.connector.FakeGraphConnector;
+import ch.sbb.polarion.extension.fake_services.service.FakePolarionServiceFactory;
 import com.polarion.core.util.logging.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -18,7 +18,7 @@ public class FakeServicesBundleActivator implements BundleActivator {
     private ServiceRegistration<IPolarionServiceFactory> polarionServiceFactoryServiceRegistration;
 
     @Override
-    public void start(BundleContext context) throws Exception {
+    public void start(BundleContext context) {
         logger.info("Registering IGraph service.");
 
         graphConnectorRegistration = context.registerService(
@@ -35,7 +35,7 @@ public class FakeServicesBundleActivator implements BundleActivator {
     }
 
     @Override
-    public void stop(BundleContext context) throws Exception {
+    public void stop(BundleContext context) {
         logger.info("Unregistering IGraph service.");
 
         graphConnectorRegistration.unregister();

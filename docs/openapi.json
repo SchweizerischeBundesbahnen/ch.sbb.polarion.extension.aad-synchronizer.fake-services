@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Fake Services for AAD Synchronizer REST API",
+    "title": "Fake Services REST API",
     "version": "v1"
   },
   "paths": {
@@ -23,6 +23,449 @@
         "summary": "Returns basic context information of Polarion's extension",
         "tags": [
           "Extension Information"
+        ]
+      }
+    },
+    "/api/opentext/api/v1/auth": {
+      "post": {
+        "operationId": "auth",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "password": {
+                    "description": "Password",
+                    "type": "string"
+                  },
+                  "username": {
+                    "description": "Username",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "password",
+                  "username"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully authenticated"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        },
+        "summary": "Authenticate and get ticket",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/api/v1/nodes": {
+      "post": {
+        "operationId": "writeFileToContainer",
+        "parameters": [
+          {
+            "description": "Authentication ticket",
+            "in": "header",
+            "name": "OTCSTICKET",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "description": "File to upload",
+                    "type": "object"
+                  },
+                  "name": {
+                    "description": "Document name",
+                    "type": "string"
+                  },
+                  "parent_id": {
+                    "description": "Parent ID",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "Type",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file",
+                  "name",
+                  "parent_id",
+                  "type"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully uploaded file"
+          },
+          "401": {
+            "description": "Invalid or missing ticket"
+          }
+        },
+        "summary": "Upload file to container",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/api/v1/nodes/{nodeId}/output": {
+      "get": {
+        "operationId": "createContainer",
+        "parameters": [
+          {
+            "description": "Authentication ticket",
+            "in": "header",
+            "name": "OTCSTICKET",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Destination (folder)",
+            "in": "query",
+            "name": "destination",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Name",
+            "in": "query",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Container ID",
+            "in": "query",
+            "name": "containerid",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "File Name",
+            "in": "query",
+            "name": "filename",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Node ID",
+            "in": "path",
+            "name": "nodeId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully created container"
+          },
+          "401": {
+            "description": "Invalid or missing ticket"
+          }
+        },
+        "summary": "Create container",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/api/v1/nodes/{nodeId}/versions": {
+      "post": {
+        "operationId": "writeNewFileVersion",
+        "parameters": [
+          {
+            "description": "Node ID",
+            "in": "path",
+            "name": "nodeId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Authentication ticket",
+            "in": "header",
+            "name": "OTCSTICKET",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "add_major_version": {
+                    "description": "Add major version",
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "File to upload",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "add_major_version",
+                  "file"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully uploaded new file version"
+          },
+          "401": {
+            "description": "Invalid or missing ticket"
+          }
+        },
+        "summary": "Upload new file version",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/api/v2/nodes/{nodeId}/versions/{version}/promote": {
+      "post": {
+        "operationId": "promoteVersion",
+        "parameters": [
+          {
+            "description": "Authentication ticket",
+            "in": "header",
+            "name": "OTCSTICKET",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Node ID",
+            "in": "path",
+            "name": "nodeId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Version",
+            "in": "path",
+            "name": "version",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully promoted version"
+          },
+          "401": {
+            "description": "Invalid or missing ticket"
+          }
+        },
+        "summary": "Promote version",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/manage/containers": {
+      "delete": {
+        "operationId": "clearContainers",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully cleared containers list"
+          }
+        },
+        "summary": "Clear all containers",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      },
+      "get": {
+        "operationId": "getAllContainers",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully retrieved all containers"
+          }
+        },
+        "summary": "Get all containers",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/manage/uploads": {
+      "delete": {
+        "operationId": "clearUploads",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully cleared uploads list"
+          }
+        },
+        "summary": "Clear all uploads",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      },
+      "get": {
+        "operationId": "getAllUploads",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully retrieved all uploads"
+          }
+        },
+        "summary": "Get all uploads",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/manage/users": {
+      "get": {
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully retrieved all users"
+          }
+        },
+        "summary": "Get all users",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      },
+      "post": {
+        "operationId": "addUser",
+        "parameters": [
+          {
+            "description": "Username",
+            "in": "query",
+            "name": "username",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Password",
+            "in": "query",
+            "name": "password",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully added user"
+          },
+          "400": {
+            "description": "User already exists"
+          }
+        },
+        "summary": "Add a new user",
+        "tags": [
+          "Fake OpenText Content Server"
+        ]
+      }
+    },
+    "/api/opentext/manage/users/{username}": {
+      "delete": {
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "description": "Username to delete",
+            "in": "path",
+            "name": "username",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successfully deleted user"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "summary": "Delete a user",
+        "tags": [
+          "Fake OpenText Content Server"
         ]
       }
     },
