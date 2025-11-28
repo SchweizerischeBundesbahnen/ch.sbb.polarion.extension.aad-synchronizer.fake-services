@@ -1,9 +1,10 @@
-package ch.sbb.polarion.extension.aad_synchronizer.fake_services;
+package ch.sbb.polarion.extension.fake_services;
 
 import ch.sbb.polarion.extension.aad.synchronizer.connector.IGraphConnector;
 import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionServiceFactory;
-import ch.sbb.polarion.extension.aad_synchronizer.fake_services.connector.FakeGraphConnector;
-import ch.sbb.polarion.extension.aad_synchronizer.fake_services.service.FakePolarionServiceFactory;
+import ch.sbb.polarion.extension.fake_services.FakeServicesBundleActivator;
+import ch.sbb.polarion.extension.fake_services.connector.FakeGraphConnector;
+import ch.sbb.polarion.extension.fake_services.service.FakePolarionServiceFactory;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

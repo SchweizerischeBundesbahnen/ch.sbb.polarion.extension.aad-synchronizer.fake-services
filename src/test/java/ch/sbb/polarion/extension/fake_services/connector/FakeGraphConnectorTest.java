@@ -1,7 +1,8 @@
-package ch.sbb.polarion.extension.aad_synchronizer.fake_services.connector;
+package ch.sbb.polarion.extension.fake_services.connector;
 
 import ch.sbb.polarion.extension.aad.synchronizer.model.Group;
 import ch.sbb.polarion.extension.aad.synchronizer.model.Member;
+import ch.sbb.polarion.extension.fake_services.connector.FakeGraphConnector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
