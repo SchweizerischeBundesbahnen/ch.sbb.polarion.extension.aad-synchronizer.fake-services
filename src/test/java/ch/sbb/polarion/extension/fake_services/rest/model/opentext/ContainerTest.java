@@ -84,20 +84,6 @@ class ContainerTest {
     }
 
     @Test
-    void testHashCode_differentObjects() {
-        // given
-        Container container1 = new Container("1", "Name", "node1", "/folder");
-        Container container2 = new Container("2", "Different", "node2", "/other");
-
-        // then - hash codes can technically collide, but should usually differ
-        // We just verify hashCode() is callable without exception
-        int hashCode1 = container1.hashCode();
-        int hashCode2 = container2.hashCode();
-        // Both hash codes should be computed successfully
-        assertNotEquals(0, hashCode1 + hashCode2); // Just verify computation worked
-    }
-
-    @Test
     void testToString() {
         // given
         Container container = new Container("123", "TestName", "node456", "/test");

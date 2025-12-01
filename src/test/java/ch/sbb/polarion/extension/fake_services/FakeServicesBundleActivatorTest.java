@@ -2,7 +2,6 @@ package ch.sbb.polarion.extension.fake_services;
 
 import ch.sbb.polarion.extension.aad.synchronizer.connector.IGraphConnector;
 import ch.sbb.polarion.extension.aad.synchronizer.service.IPolarionServiceFactory;
-import ch.sbb.polarion.extension.fake_services.FakeServicesBundleActivator;
 import ch.sbb.polarion.extension.fake_services.connector.FakeGraphConnector;
 import ch.sbb.polarion.extension.fake_services.service.FakePolarionServiceFactory;
 import lombok.SneakyThrows;

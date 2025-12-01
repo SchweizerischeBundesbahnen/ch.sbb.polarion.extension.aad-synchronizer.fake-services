@@ -34,15 +34,14 @@ import java.util.Objects;
 public class OpenTextApiController {
 
     private static final String HEADER_TICKET_PARAM = "OTCSTICKET";
+    private static final String ERROR = "error";
+    private static final String MESSAGE = "message";
+    private static final String TICKET_ERROR = "Invalid or missing ticket";
 
     /**
      * Map username to password for authentication
      */
-    private final Map<String, String> users = new HashMap<>() {
-        {
-            put("test_user", "test_password");
-        }
-    };
+    private final Map<String, String> users = new HashMap<>();
 
     /**
      * Map username to ticket for session management
@@ -58,6 +57,10 @@ public class OpenTextApiController {
      * Contains executed uploads
      */
     private final List<Upload> uploads = new ArrayList<>();
+
+    public OpenTextApiController() {
+        users.put("test_user", "test_password");
+    }
 
     @POST
     @Path("/api/v1/auth")
@@ -83,14 +86,14 @@ public class OpenTextApiController {
             @Parameter(description = "Password", required = true) @FormParam("password") String password) {
         if (username == null || password == null) {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(Map.of("error", "Username and password are required"))
+                    .entity(Map.of(ERROR, "Username and password are required"))
                     .build();
         }
 
         String storedPassword = users.get(username);
         if (storedPassword == null || !storedPassword.equals(password)) {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(Map.of("error", "Invalid username or password"))
+                    .entity(Map.of(ERROR, "Invalid username or password"))
                     .build();
         }
 
@@ -115,7 +118,7 @@ public class OpenTextApiController {
                     ),
                     @ApiResponse(
                             responseCode = "401",
-                            description = "Invalid or missing ticket"
+                            description = TICKET_ERROR
                     )
             }
     )
@@ -129,7 +132,7 @@ public class OpenTextApiController {
 
         if (isInvalidTicket(ticket)) {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(Map.of("error", "Invalid or missing ticket"))
+                    .entity(Map.of(ERROR, TICKET_ERROR))
                     .build();
         }
 
@@ -154,7 +157,7 @@ public class OpenTextApiController {
                     ),
                     @ApiResponse(
                             responseCode = "401",
-                            description = "Invalid or missing ticket"
+                            description = TICKET_ERROR
                     )
             }
     )
@@ -166,7 +169,7 @@ public class OpenTextApiController {
 
         if (isInvalidTicket(ticket)) {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(Map.of("error", "Invalid or missing ticket"))
+                    .entity(Map.of(ERROR, TICKET_ERROR))
                     .build();
         }
         return Response.ok().build();
@@ -187,7 +190,7 @@ public class OpenTextApiController {
                     ),
                     @ApiResponse(
                             responseCode = "401",
-                            description = "Invalid or missing ticket"
+                            description = TICKET_ERROR
                     )
             }
     )
@@ -200,7 +203,7 @@ public class OpenTextApiController {
 
         if (isInvalidTicket(ticket)) {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(Map.of("error", "Invalid or missing ticket"))
+                    .entity(Map.of(ERROR, TICKET_ERROR))
                     .build();
         }
 
@@ -212,18 +215,18 @@ public class OpenTextApiController {
     @GET
     @Path("/api/v1/nodes/{nodeId}/output")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Create container",
+    @Operation(summary = "Create container or check file existence",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Successfully created container",
+                            description = "Successfully created container or file existence checked",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON
                             )
                     ),
                     @ApiResponse(
                             responseCode = "401",
-                            description = "Invalid or missing ticket"
+                            description = TICKET_ERROR
                     )
             }
     )
@@ -237,7 +240,7 @@ public class OpenTextApiController {
 
         if (isInvalidTicket(ticket)) {
             return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity(Map.of("error", "Invalid or missing ticket"))
+                    .entity(Map.of(ERROR, TICKET_ERROR))
                     .build();
         }
 
@@ -252,7 +255,7 @@ public class OpenTextApiController {
             return Response.ok(Map.of("documentexists", fileExists)).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("error", "Either destination or containerid must be provided"))
+                    .entity(Map.of(ERROR, "Either destination or containerid must be provided"))
                     .build();
         }
     }
@@ -298,12 +301,12 @@ public class OpenTextApiController {
             @Parameter(description = "Password", required = true) @QueryParam("password") String password) {
         if (users.containsKey(username)) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("error", "User already exists"))
+                    .entity(Map.of(ERROR, "User already exists"))
                     .build();
         }
         users.put(username, password);
         return Response.status(Response.Status.CREATED)
-                .entity(Map.of("message", "User created successfully", "username", username))
+                .entity(Map.of(MESSAGE, "User created successfully", "username", username))
                 .build();
     }
 
@@ -329,11 +332,11 @@ public class OpenTextApiController {
             @Parameter(description = "Username to delete", required = true) @PathParam("username") String username) {
         if (!users.containsKey(username)) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(Map.of("error", "User not found"))
+                    .entity(Map.of(ERROR, "User not found"))
                     .build();
         }
         users.remove(username);
-        return Response.ok(Map.of("message", "User deleted successfully", "username", username)).build();
+        return Response.ok(Map.of(MESSAGE, "User deleted successfully", "username", username)).build();
     }
 
     @GET
@@ -371,7 +374,7 @@ public class OpenTextApiController {
     public Response clearUploads() {
         int count = uploads.size();
         uploads.clear();
-        return Response.ok(Map.of("message", "Uploads cleared successfully", "count", count)).build();
+        return Response.ok(Map.of(MESSAGE, "Uploads cleared successfully", "count", count)).build();
     }
 
     @GET
@@ -409,7 +412,7 @@ public class OpenTextApiController {
     public Response clearContainers() {
         int count = containers.size();
         containers.clear();
-        return Response.ok(Map.of("message", "Containers cleared successfully", "count", count)).build();
+        return Response.ok(Map.of(MESSAGE, "Containers cleared successfully", "count", count)).build();
     }
 
     /**
