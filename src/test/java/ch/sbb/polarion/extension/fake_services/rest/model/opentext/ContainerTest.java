@@ -18,28 +18,10 @@ class ContainerTest {
         Container container = new Container(id, name, nodeId, folder);
 
         // then
-        assertEquals(id, container.getId());
-        assertEquals(name, container.getName());
-        assertEquals(nodeId, container.getNodeId());
-        assertEquals(folder, container.getFolder());
-    }
-
-    @Test
-    void testGettersAndSetters() {
-        // given
-        Container container = new Container("1", "Original", "node1", "/original");
-
-        // when
-        container.setId("2");
-        container.setName("Updated");
-        container.setNodeId("node2");
-        container.setFolder("/updated");
-
-        // then
-        assertEquals("2", container.getId());
-        assertEquals("Updated", container.getName());
-        assertEquals("node2", container.getNodeId());
-        assertEquals("/updated", container.getFolder());
+        assertEquals(id, container.id());
+        assertEquals(name, container.name());
+        assertEquals(nodeId, container.nodeId());
+        assertEquals(folder, container.folder());
     }
 
     @Test
@@ -105,10 +87,10 @@ class ContainerTest {
         Container container = new Container(null, null, null, null);
 
         // then
-        assertNull(container.getId());
-        assertNull(container.getName());
-        assertNull(container.getNodeId());
-        assertNull(container.getFolder());
+        assertNull(container.id());
+        assertNull(container.name());
+        assertNull(container.nodeId());
+        assertNull(container.folder());
     }
 
     @Test
@@ -117,10 +99,10 @@ class ContainerTest {
         Container container = new Container("", "", "", "");
 
         // then
-        assertEquals("", container.getId());
-        assertEquals("", container.getName());
-        assertEquals("", container.getNodeId());
-        assertEquals("", container.getFolder());
+        assertEquals("", container.id());
+        assertEquals("", container.name());
+        assertEquals("", container.nodeId());
+        assertEquals("", container.folder());
     }
 
     @Test
@@ -129,10 +111,10 @@ class ContainerTest {
         Container container = new Container("1", null, "node1", null);
 
         // then
-        assertEquals("1", container.getId());
-        assertNull(container.getName());
-        assertEquals("node1", container.getNodeId());
-        assertNull(container.getFolder());
+        assertEquals("1", container.id());
+        assertNull(container.name());
+        assertEquals("node1", container.nodeId());
+        assertNull(container.folder());
     }
 
 }

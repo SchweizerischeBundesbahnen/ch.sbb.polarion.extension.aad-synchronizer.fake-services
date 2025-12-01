@@ -137,7 +137,7 @@ public class OpenTextApiController {
         }
 
         String nodeId = "NODE_" + System.currentTimeMillis();
-        uploads.add(new Upload(name, nodeId, parentId, inputStream, ticket, false));
+        uploads.add(Upload.fromValues(name, nodeId, parentId, inputStream, ticket, false));
 
         return Response.ok(Map.of("id", nodeId)).build();
     }
@@ -207,7 +207,7 @@ public class OpenTextApiController {
                     .build();
         }
 
-        uploads.add(new Upload(null, nodeId, null, inputStream, ticket, true));
+        uploads.add(Upload.fromValues(null, nodeId, null, inputStream, ticket, true));
 
         return Response.ok(Map.of("id", nodeId, "version_number", "2.0")).build();
     }
@@ -251,7 +251,7 @@ public class OpenTextApiController {
             return Response.ok(Map.of("objId", newContainerId, "status", "OK")).build();
         } else if (containerId != null) {
             // Check file existence scenario
-            boolean fileExists = uploads.stream().anyMatch(upload -> Objects.equals(upload.getFileName(), filename));
+            boolean fileExists = uploads.stream().anyMatch(upload -> Objects.equals(upload.fileName(), filename));
             return Response.ok(Map.of("documentexists", fileExists)).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST)

@@ -195,13 +195,13 @@
             "content": {
               "application/json": {}
             },
-            "description": "Successfully created container"
+            "description": "Successfully created container or file existence checked"
           },
           "401": {
             "description": "Invalid or missing ticket"
           }
         },
-        "summary": "Create container",
+        "summary": "Create container or check file existence",
         "tags": [
           "Fake OpenText Content Server"
         ]
