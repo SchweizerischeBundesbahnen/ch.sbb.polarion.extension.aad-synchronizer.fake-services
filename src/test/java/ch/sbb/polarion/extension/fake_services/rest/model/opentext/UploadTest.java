@@ -4,6 +4,8 @@ import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -64,6 +66,28 @@ class UploadTest {
         assertEquals(content.getBytes(StandardCharsets.UTF_8).length, upload.size());
         assertEquals("ticket-4", upload.ticket());
         assertTrue(upload.versionUpdate());
+    }
+
+    @Test
+    @SuppressWarnings("resource")
+    void testSneakyThrowsIOException() {
+        // Create a mock InputStream that throws IOException on read
+        InputStream failingStream = new InputStream() {
+            @Override
+            public int read() throws IOException {
+                throw new IOException("Simulated IO error");
+            }
+        };
+
+        // The @SneakyThrows annotation allows checked exceptions to be thrown
+        // without being declared or caught. It "sneakily" throws the IOException
+        // as if it were an unchecked exception at the bytecode level.
+        IOException exception = assertThrows(IOException.class, () ->
+                Upload.fromValues("failing.txt", "n3", "p3", failingStream, "t-5", false)
+        );
+
+        // Verify it's the expected IOException
+        assertEquals("Simulated IO error", exception.getMessage());
     }
 
 }

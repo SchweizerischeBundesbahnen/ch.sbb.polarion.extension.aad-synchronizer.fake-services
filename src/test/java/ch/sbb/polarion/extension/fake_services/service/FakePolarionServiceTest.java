@@ -9,15 +9,14 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 class FakePolarionServiceTest {
     @Test
     @SneakyThrows
@@ -32,7 +31,7 @@ class FakePolarionServiceTest {
         IUser mockUser2 = mock(IUser.class);
         when(mockUserList.stream()).thenReturn(Stream.of(mockUser1, mockUser2));
 
-        List<String> memberIds = Arrays.asList("user1", "dev2");
+        List<String> memberIds = List.of("user1", "user2", "user3", "dev1", "dev2", "dev3");
         SecureRandom controlledRandom = new SecureRandom() {
             private int count = 0;
 
@@ -53,7 +52,8 @@ class FakePolarionServiceTest {
         List<String> result = (List<String>) method.invoke(service);
 
         assertTrue(result.contains("USER1"));
-        assertFalse(result.contains("dev2"));
+        assertTrue(result.contains("USER3"));
+        assertTrue(result.contains("dev2"));
         assertTrue(result.contains("testuser"));
         assertTrue(result.contains("testUser"));
         assertTrue(result.contains("TESTUSER"));

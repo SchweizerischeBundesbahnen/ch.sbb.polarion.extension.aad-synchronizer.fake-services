@@ -2,7 +2,6 @@ package ch.sbb.polarion.extension.fake_services.service;
 
 import ch.sbb.polarion.extension.generic.util.PObjectListStub;
 import com.polarion.alm.projects.IProjectService;
-import com.polarion.platform.persistence.spi.PObjectList;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

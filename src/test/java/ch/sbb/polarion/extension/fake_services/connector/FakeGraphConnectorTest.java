@@ -43,4 +43,9 @@ class FakeGraphConnectorTest {
             assertNotNull(member.getEmail());
         }
     }
+
+    @Test
+    void testGetOrganizationData() {
+        assertNotNull(connector.getOrganizationData());
+    }
 }
