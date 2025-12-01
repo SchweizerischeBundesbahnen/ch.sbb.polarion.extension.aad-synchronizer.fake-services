@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module id="ch.sbb.polarion.extension.aad_synchronizer.fake_services" version="1.0.0">
+<module id="ch.sbb.polarion.extension.fake_services" version="1.0.0">
 
     <contribution configuration-id="com.polarion.xray.webui.administrationPageExtenders">
         <extender id="about"
                   name="About"
-                  parentNodeId="aad-synchronizer.fake-services"
-                  parentNodeName="AAD Synchronizer Fake Services"
-                  parentNodeIconUrl="/polarion/aad-synchronizer.fake-services-admin/ui/images/menu/30x30/_parent.svg"
-                  iconUrl="/polarion/aad-synchronizer.fake-services-admin/ui/images/menu/16x16/about.svg"
-                  pageUrl="/polarion/aad-synchronizer.fake-services-admin/pages/about.jsp"
+                  parentNodeId="fake-services"
+                  parentNodeName="Fake Services"
+                  parentNodeIconUrl="/polarion/fake-services-admin/ui/images/menu/30x30/_parent.svg"
+                  iconUrl="/polarion/fake-services-admin/ui/images/menu/16x16/about.svg"
+                  pageUrl="/polarion/fake-services-admin/pages/about.jsp"
                   projectScope="false"
                   projectGroupScope="false"
                   repositoryScope="true"/>
 
         <extender id="rest-api"
                   name="REST API"
-                  parentNodeId="aad-synchronizer.fake-services"
-                  iconUrl="/polarion/aad-synchronizer.fake-services-admin/ui/images/menu/16x16/rest_api.svg"
-                  pageUrl="/polarion/aad-synchronizer.fake-services/rest/swagger"
+                  parentNodeId="fake-services"
+                  iconUrl="/polarion/fake-services-admin/ui/images/menu/16x16/rest_api.svg"
+                  pageUrl="/polarion/fake-services/rest/swagger"
                   projectScope="false"
                   projectGroupScope="false"
                   repositoryScope="true"/>

@@ -8,18 +8,18 @@
         <version>11.3.0</version>
     </parent>
 
-    <artifactId>ch.sbb.polarion.extension.aad-synchronizer.fake-services</artifactId>
+    <artifactId>ch.sbb.polarion.extension.fake-services</artifactId>
     <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Polarion ALM extension to intercept requests from AAD Synchronizer to Azure AD</name>
-    <description>This is a Polarion extension which provides ability to test AAD Synchronizer extension on local Polarion without need to have Azure AD environment</description>
-    <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services</url>
+    <name>Polarion ALM extension to provide fake/stub implementation of various services</name>
+    <description>This is a Polarion extension which provides ability to test extensions on local machine without need to have real production environment (Azure AD, OpenText etc.)</description>
+    <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.fake-services</url>
 
     <licenses>
         <license>
             <name>The SBB License, Version 1.0</name>
-            <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/blob/main/LICENSES/SBB.txt</url>
+            <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.fake-services/blob/main/LICENSES/SBB.txt</url>
         </license>
     </licenses>
 
@@ -33,19 +33,19 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services.git</connection>
-        <developerConnection>scm:git:ssh://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services.git</developerConnection>
-        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/tree/main</url>
+        <connection>scm:git:git://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.fake-services.git</connection>
+        <developerConnection>scm:git:ssh://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.fake-services.git</developerConnection>
+        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.fake-services/tree/main</url>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.aad-synchronizer.fake-services/issues</url>
+        <url>https://github.com/SchweizerischeBundesbahnen/ch.sbb.polarion.extension.fake-services/issues</url>
     </issueManagement>
 
     <properties>
-        <maven-jar-plugin.Extension-Context>aad-synchronizer.fake-services</maven-jar-plugin.Extension-Context>
-        <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.aad_synchronizer.fake_services</maven-jar-plugin.Automatic-Module-Name>
+        <maven-jar-plugin.Extension-Context>fake-services</maven-jar-plugin.Extension-Context>
+        <maven-jar-plugin.Automatic-Module-Name>ch.sbb.polarion.extension.fake_services</maven-jar-plugin.Automatic-Module-Name>
 
         <web.app.name>${maven-jar-plugin.Extension-Context}</web.app.name>
 
@@ -72,6 +72,14 @@
             <artifactId>org.osgi.framework</artifactId>
             <version>${org.osgi.framework.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.sbb.polarion.extensions</groupId>
+            <artifactId>ch.sbb.polarion.extension.generic.app</artifactId>
+            <version>${project.parent.version}</version>
+            <type>test-jar</type>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -126,7 +134,7 @@
                     <resourcePackages>
                         <package>ch.sbb.polarion.extension.generic.rest.controller.info</package>
                         <package>ch.sbb.polarion.extension.generic.rest.model</package>
-                        <package>ch.sbb.polarion.extension.aad_synchronizer.fake_services.rest.controller</package>
+                        <package>ch.sbb.polarion.extension.fake_services.rest.controller</package>
                     </resourcePackages>
                 </configuration>
             </plugin>
