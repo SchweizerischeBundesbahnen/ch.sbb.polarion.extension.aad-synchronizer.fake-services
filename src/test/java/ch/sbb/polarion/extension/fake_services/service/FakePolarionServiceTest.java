@@ -7,7 +7,6 @@ import com.polarion.platform.security.ISecurityService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Method;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.stream.Stream;
@@ -28,34 +27,19 @@ class FakePolarionServiceTest {
         when(mockProjectService.getUsers()).thenReturn(mockUserList);
 
         IUser mockUser1 = mock(IUser.class);
+        when(mockUser1.getId()).thenReturn("mockUser1");
         IUser mockUser2 = mock(IUser.class);
-        when(mockUserList.stream()).thenReturn(Stream.of(mockUser1, mockUser2));
+        when(mockUser2.getId()).thenReturn("mockUser2");
+        when(mockUserList.stream()).thenAnswer(invocationOnMock -> Stream.of(mockUser1, mockUser2));
 
-        List<String> memberIds = List.of("user1", "user2", "user3", "dev1", "dev2", "dev3");
-        SecureRandom controlledRandom = new SecureRandom() {
-            private int count = 0;
+        List<String> memberIds = List.of("user1", "dev2");
+        SecureRandom controlledRandom = mock(SecureRandom.class);
+        when(controlledRandom.nextBoolean()).thenReturn(true);
+        FakePolarionService service = new FakePolarionService(mockSecurityService, mockProjectService, false, memberIds, controlledRandom);
+        assertTrue(service.getAllPolarionUsers().containsAll(List.of("USER1", "dev2", "testuser", "testUser", "TESTUSER")));
 
-            @Override
-            public boolean nextBoolean() {
-                return count++ % 2 == 0;
-            }
-        };
-
-        FakePolarionService service = new FakePolarionService(
-                mockSecurityService, mockProjectService, false, memberIds, controlledRandom
-        );
-
-        Method method = FakePolarionService.class.getDeclaredMethod("getAllPolarionUsers");
-        method.setAccessible(true);
-
-        @SuppressWarnings("unchecked")
-        List<String> result = (List<String>) method.invoke(service);
-
-        assertTrue(result.contains("USER1"));
-        assertTrue(result.contains("USER3"));
-        assertTrue(result.contains("dev2"));
-        assertTrue(result.contains("testuser"));
-        assertTrue(result.contains("testUser"));
-        assertTrue(result.contains("TESTUSER"));
+        when(controlledRandom.nextBoolean()).thenReturn(false);
+        service = new FakePolarionService(mockSecurityService, mockProjectService, false, memberIds, controlledRandom);
+        assertTrue(service.getAllPolarionUsers().stream().noneMatch(v -> List.of("USER1", "dev2", "testuser", "testUser", "TESTUSER").contains(v)));
     }
 }
