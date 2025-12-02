@@ -18,7 +18,7 @@ public class AadSynchronizerServiceRegistrar {
     private static final Logger logger = Logger.getLogger(AadSynchronizerServiceRegistrar.class);
 
     public List<ServiceRegistration> register(BundleContext context) {
-        logger.info("Registering IGraph service.");
+        logger.info("Registering IGraph services.");
 
         List<ServiceRegistration> registrations = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class AadSynchronizerServiceRegistrar {
                 new FakePolarionServiceFactory(),
                 new Hashtable<String, String>()));
 
-        logger.info("IGraph service have been registered.");
+        logger.info("IGraph services have been registered.");
 
         return registrations;
     }

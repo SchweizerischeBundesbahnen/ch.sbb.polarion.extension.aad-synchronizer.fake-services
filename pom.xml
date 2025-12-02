@@ -51,7 +51,7 @@
 
         <aad-synchronizer.version>4.0.0</aad-synchronizer.version>
         <org.osgi.framework.version>1.10.0</org.osgi.framework.version>
-        <commons-text.version>1.14.0</commons-text.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
     </properties>
 
     <dependencies>
@@ -62,8 +62,8 @@
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons-text.version}</version>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>

@@ -23,7 +23,7 @@ public class FakeServicesBundleActivator implements BundleActivator {
             Object registrar = ConstructorUtils.invokeConstructor(registrarClass);
             serviceRegistrations.addAll((List<ServiceRegistration>) MethodUtils.invokeMethod(registrar, "register", context));
         } catch (Exception e) {
-            logger.warn("AAD Synchronizer classes not found, skipping fake IGraph services registration");
+            logger.warn("AAD Synchronizer classes not found. This is expected if AAD-Synchronizer is not installed; skipping fake IGraph services registration.");
         }
     }
 
