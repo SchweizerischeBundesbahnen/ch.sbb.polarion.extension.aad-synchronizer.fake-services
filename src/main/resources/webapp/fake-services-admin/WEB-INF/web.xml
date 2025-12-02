@@ -8,7 +8,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>aad-synchronizer.fake-services-admin</display-name>
+    <display-name>fake-services-admin</display-name>
 
     <filter>
         <filter-name>DoAsFilter</filter-name>
@@ -29,7 +29,7 @@
     </mime-mapping>
 
     <servlet>
-        <servlet-name>aad-synchronizer.fake-services-admin-ui</servlet-name>
+        <servlet-name>fake-services-admin-ui</servlet-name>
         <servlet-class>ch.sbb.polarion.extension.fake_services.FakeServicesAdminUiServlet</servlet-class>
 
         <init-param>
@@ -40,7 +40,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>aad-synchronizer.fake-services-admin-ui</servlet-name>
+        <servlet-name>fake-services-admin-ui</servlet-name>
         <url-pattern>/ui/*</url-pattern>
     </servlet-mapping>
 

@@ -51,6 +51,7 @@
 
         <aad-synchronizer.version>4.0.0</aad-synchronizer.version>
         <org.osgi.framework.version>1.10.0</org.osgi.framework.version>
+        <commons-text.version>1.14.0</commons-text.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,11 @@
             <groupId>ch.sbb.polarion.extensions</groupId>
             <artifactId>ch.sbb.polarion.extension.generic.app</artifactId>
             <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
         </dependency>
 
         <dependency>
