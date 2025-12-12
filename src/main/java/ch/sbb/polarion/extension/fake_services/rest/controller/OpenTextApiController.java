@@ -37,6 +37,7 @@ public class OpenTextApiController {
     private static final String ERROR = "error";
     private static final String MESSAGE = "message";
     private static final String TICKET_ERROR = "Invalid or missing ticket";
+    private static final String COUNT = "count";
 
     /**
      * Map username to password for authentication
@@ -375,14 +376,14 @@ public class OpenTextApiController {
         int count;
         if (ticket != null) {
             List<Upload> toRemove = uploads.stream()
-                    .filter(container -> Objects.equals(container.ticket(), ticket)).toList();
+                    .filter(upload -> Objects.equals(upload.ticket(), ticket)).toList();
             count = toRemove.size();
             toRemove.forEach(uploads::remove);
         } else {
             count = uploads.size();
             uploads.clear();
         }
-        return Response.ok(Map.of(MESSAGE, "Uploads cleared successfully", "count", count)).build();
+        return Response.ok(Map.of(MESSAGE, "Uploads cleared successfully", COUNT, count)).build();
     }
 
     @GET
@@ -428,7 +429,7 @@ public class OpenTextApiController {
             count = containers.size();
             containers.clear();
         }
-        return Response.ok(Map.of(MESSAGE, "Containers cleared successfully", "count", count)).build();
+        return Response.ok(Map.of(MESSAGE, "Containers cleared successfully", COUNT, count)).build();
     }
 
     @GET
@@ -474,7 +475,7 @@ public class OpenTextApiController {
             count = tickets.size();
             tickets.clear();
         }
-        return Response.ok(Map.of(MESSAGE, "Ticket(s) cleared successfully", "count", count)).build();
+        return Response.ok(Map.of(MESSAGE, "Ticket(s) cleared successfully", COUNT, count)).build();
     }
 
     /**
